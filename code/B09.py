@@ -1,8 +1,3 @@
-a, b, c, d = map(int, input().split())
-e, f, g, h = map(int, input().split())
-
-
-# 用遞迴解會超時
 def fibonacci(n):
     if n == 0:
         return 0
@@ -14,10 +9,24 @@ def fibonacci(n):
     return b
 
 
-n = 56 * a + 24 * b + 14 * c + 6 * d
-n1 = 56 * e + 24 * f + 14 * g + 6 * h
+while True:
+    try:
+        a, b, c, d = map(int, input().split())
+        n = 56 * a + 24 * b + 14 * c + 6 * d
+        result = fibonacci(n)
+        print(result)
 
-fib_n = fibonacci(n)
-fib_n1 = fibonacci(n1)
-print(fib_n)
-print(fib_n1)
+    except:
+        break
+
+
+# a, b, c, d = map(int, input().split())
+# e, f, g, h = map(int, input().split())
+
+# n = 56 * a + 24 * b + 14 * c + 6 * d
+# n1 = 56 * e + 24 * f + 14 * g + 6 * h
+
+# fib_n = fibonacci(n)
+# fib_n1 = fibonacci(n1)
+# print(fib_n)
+# print(fib_n1)
