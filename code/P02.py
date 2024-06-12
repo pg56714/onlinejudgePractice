@@ -5,7 +5,6 @@ def has_hump(input_string):
         left_nums = numbers[:i]
         right_nums = numbers[i + 1 :]
 
-        # 檢查當前數字是否比左右側數字都大
         if numbers[i] > max(left_nums) and numbers[i] > max(right_nums):
             return 1
     return 0
