@@ -10,6 +10,7 @@ def can_divide_all(input_str):
 
 
 input_str = input()
+
 print(can_divide_all(input_str))
 
 
