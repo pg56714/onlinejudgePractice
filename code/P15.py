@@ -9,9 +9,23 @@ def is_valid(board, row, col, num):
     return True
 
 
-def find_missing_number(board):
-    question_mark_row = question_mark_col = -1
+def is_valid_sudoku(board):
+    for row in range(9):
+        for col in range(9):
+            num = board[row][col]
+            if num != "?":
+                board[row][col] = "?"
+                if not is_valid(board, row, col, num):
+                    return False
+                board[row][col] = num
+    return True
 
+
+def find_missing_number(board):
+    if not is_valid_sudoku(board):
+        return -1
+
+    question_mark_row = question_mark_col = -1
     for row in range(9):
         for col in range(9):
             if board[row][col] == "?":
