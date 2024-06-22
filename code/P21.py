@@ -1,24 +1,28 @@
 def can_partition(nums):
-    if len(nums) % 2 != 0 or len(nums) not in {2, 4, 6, 8, 10}:
-        return 0
-
     total_sum = sum(nums)
+    n = len(nums)
+    half = n // 2
+
     if total_sum % 2 != 0:
         return 0
 
     target = total_sum // 2
-    n = len(nums) // 2
-    dp = [set() for _ in range(n + 1)]
-    dp[0].add(0)
+
+    dp = [[False] * (target + 1) for _ in range(half + 1)]
+    dp[0][0] = True
 
     for num in nums:
-        for j in range(n, 0, -1):
-            for prev in dp[j - 1]:
-                if prev + num <= target:
-                    dp[j].add(prev + num)
+        for count in range(half, 0, -1):
+            for j in range(target, num - 1, -1):
+                if dp[count - 1][j - num]:
+                    dp[count][j] = True
 
-    return 1 if target in dp[n] else 0
+    for j in range(target + 1):
+        if dp[half][j] and j * 2 == total_sum:
+            return 1
+    return 0
 
 
-input_str = list(map(int, input().strip().split(", ")))
-print(can_partition(input_str))
+input_str = input()
+nums = list(map(int, input_str.strip().split(",")))
+print(can_partition(nums))
